@@ -13,34 +13,55 @@
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <form>
-        <input type="text" placeholder="Enter the city" , required />
-        <input type="submit" value="Search" />
-      </form>
-    </header>
-    <main>
-      <h1>Kyiv</h1>
-      <div>☀️0°C</div>
-      <p>
-        Wednesday <br />
-        cloudy
-        <br />
-        💧50%
-        <br />
-        🪁7m/sec
-      </p>
-    </main>
-    <footer>
-      The project was coded by
-      <a href="https://www.instagram.com/vika_proki/" target="_blank"
-        >Viktoriia prokipchuk</a
-      >
-      and is
-      <a href="https://github.com/Vikki-Proki/weather_app">on GitHub</a> and
-      <a href="https://weather-app-vikki-proki.netlify.app/"
-        >hosted on Netlify</a
-      >
-    </footer>
+    <div class="weather-app">
+      <header>
+        <form>
+          <input
+            type="text"
+            class="search-form-input"
+            placeholder="Enter the city"
+            ,
+            required
+          />
+          <input type="submit" class="search-form-button" value="Search" />
+        </form>
+      </header>
+      <main>
+        <div class="all-weather">
+        <h1 class="weather-app-city">Kyiv</h1>
+        <div class="temperature-container">
+          <div class="weather-app-temperature">0</div>
+          <div class="temperature-value">°C</div>
+      </div>
+        </div>
+        <h3 class="weather-app-date">Wednesday</h3>
+        <p>
+          <div class="weather-info">
+        
+          <div class="weather-app-details">cloudy
+          <br />
+          💧50%
+          <br />
+          🪁7m/sec
+          </div>
+          <div class="weather-app-icon">☀️</div>
+          </div>
+        </p>
+        </div>
+        
+      
+      </main>
+      <footer>
+        The project was coded by
+        <a href="https://www.instagram.com/vika_proki/" target="_blank"
+          >Viktoriia prokipchuk</a
+        >
+        and is
+        <a href="https://github.com/Vikki-Proki/weather_app">on GitHub</a> and
+        <a href="https://weather-app-vikki-proki.netlify.app/"
+          >hosted on Netlify</a
+        >
+      </footer>
+    </div>
   </body>
 </html>
