@@ -89,6 +89,29 @@ strong {
   color: #93a7d2;
 }
 
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 18px;
+  color: #4072e1;
+}
+
+.forecast-temperature-min {
+  font-size: 18px;
+  color: #93a7d2;
+  text-align: center;
+}
+
+.forecast-temperature-max {
+  font-size: 18 px;
+  color: #93a7d2;
+  opacity: 0.5;
+  text-align: center;
+}
+
 a {
   color: #073ac5;
 }
