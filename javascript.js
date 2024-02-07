@@ -68,12 +68,12 @@ function displayForecast() {
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
-      ` <div class="forecast-date">${day}</div>
-      <br />
-          <div class="forecast-icon">🌤️</div>
-          <br />
-          <div class="forecast-temperature-min"><storng>1</storng></div>
-          <div class="forecast-temperature-max">3</div>`;
+      `<div class="col-2">
+      <div class="forecast-icon">🌤️</div>
+          <div class="forecast-date">${day}</div>
+          <div class="forecast-temperature"><span class="forecast-temperature-min"><strong>1</strong></span>
+          <span class="forecast-temperature-max">3</span></div>
+          </div>`;
   });
 
   let forecastElement = document.querySelector("#forecast");
