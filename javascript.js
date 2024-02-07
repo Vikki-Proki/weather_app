@@ -16,6 +16,8 @@ function currentWeather(response) {
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
   timeElement.innerHTML = formatDate(date);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}">`;
+
+  displayForecast();
 }
 
 function formatDate(date) {
@@ -62,7 +64,13 @@ searchForm.addEventListener("submit", Search);
 
 searchCity("Kyiv");
 
-function displayForecast() {
+function getForecast() {
+  let apiKey = "edo97t5ec7b58060fa4428df5feafb3a";
+  let apiUrl = `https://api.shecodes.io/weatherforecast/v1/current?query=${city}&key=${apiKey}units="metric"`;
+  axios(apiUrl).than(displayForecast);
+}
+
+function displayForecast(response) {
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHTML = "";
   days.forEach(function (day) {
@@ -79,4 +87,6 @@ function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHTML;
 }
+
 displayForecast();
+getForecast();
