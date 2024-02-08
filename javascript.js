@@ -17,7 +17,7 @@ function currentWeather(response) {
   timeElement.innerHTML = formatDate(date);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}">`;
 
-  displayForecast();
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -59,34 +59,43 @@ function Search(event) {
   searchCity(searchInput.value);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", Search);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
 
-searchCity("Kyiv");
-
-function getForecast() {
+function getForecast(city) {
   let apiKey = "edo97t5ec7b58060fa4428df5feafb3a";
-  let apiUrl = `https://api.shecodes.io/weatherforecast/v1/current?query=${city}&key=${apiKey}units="metric"`;
-  axios(apiUrl).than(displayForecast);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHTML = "";
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-      <div class="forecast-icon">🌤️</div>
-          <div class="forecast-date">${day}</div>
-          <div class="forecast-temperature"><span class="forecast-temperature-min"><strong>1</strong></span>
-          <span class="forecast-temperature-max">3</span></div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+      <div>
+      <img src="${day.condition.icon_url}" class="forecast-icon" /></div>
+          <div class="forecast-date">${formatDay(day.time)}</div>
+          <div class="forecast-temperature"><span class="forecast-temperature-min"><strong>${Math.round(
+            day.temperature.minimum
+          )}°</strong></span>
+          <span class="forecast-temperature-max">${Math.round(
+            day.temperature.maximum
+          )}°</span></div>
           </div>`;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
-getForecast();
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", Search);
+
+searchCity("Kyiv");
