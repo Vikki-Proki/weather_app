@@ -106,6 +106,7 @@ strong {
 .forecast-date {
   font-size: 22px;
   color: #4072e1;
+  line-height: 2;
 }
 
 .forecast-temperature {
